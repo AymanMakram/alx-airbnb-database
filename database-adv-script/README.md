@@ -24,3 +24,11 @@ Combines LEFT and RIGHT JOIN using UNION to show:
 Run the queries using:
 ```sql
 SOURCE joins_queries.sql;
+
+---
+
+## Subqueries
+
+## Objective
+Practice writing **non-correlated** and **correlated subqueries** in MySQL  
+to extract insights from relational data in the Airbnb system.
