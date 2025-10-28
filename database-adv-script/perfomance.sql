@@ -40,8 +40,9 @@ ORDER BY b.start_date DESC;
 -- Optimization techniques applied:
 --  • Use SELECT with only needed columns.
 --  • Ensure indexes on foreign keys: user_id, property_id, booking_id.
+--  • Filter unnecessary rows using WHERE and AND.
 --  • Avoid sorting large intermediate results.
---  • Replace LEFT JOIN if payments always exist.
+--  • Use LIMIT for pagination.
 
 EXPLAIN ANALYZE
 SELECT
@@ -59,15 +60,18 @@ INNER JOIN users u USING (user_id)
 INNER JOIN properties p USING (property_id)
 LEFT JOIN payments pay USING (booking_id)
 WHERE b.status IN ('confirmed', 'pending')
+  AND u.is_active = TRUE
+  AND b.start_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
 ORDER BY b.start_date DESC
 LIMIT 100;
 
 -- Notes:
+-- • Added AND conditions to filter active users and recent bookings.
 -- • Uses USING() syntax for cleaner joins.
--- • Adds WHERE filter to reduce scanned rows.
--- • Adds LIMIT to prevent unnecessary full table sorting.
+-- • Adds WHERE + AND for optimized filtering.
 -- • Uses pre-created indexes to improve join speed:
 --      - idx_bookings_user
 --      - idx_bookings_property
 --      - idx_bookings_status
+--      - idx_users_active
 -- ============================================================
