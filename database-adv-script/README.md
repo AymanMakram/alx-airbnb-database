@@ -32,3 +32,8 @@ SOURCE joins_queries.sql;
 ## Objective
 Practice writing **non-correlated** and **correlated subqueries** in MySQL  
 to extract insights from relational data in the Airbnb system.
+
+# Aggregations and Window Functions
+
+## Objective
+Apply SQL **aggregation** and **window functions** to analyze booking and property performance data in the Airbnb system.
