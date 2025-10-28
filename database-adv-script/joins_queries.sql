@@ -28,7 +28,8 @@ SELECT
     r.comment
 FROM properties p
 LEFT JOIN reviews r
-    ON p.property_id = r.property_id;
+    ON p.property_id = r.property_id
+ORDER BY p.name ASC, r.rating DESC;
 
 -- 3 FULL OUTER JOIN simulation: All users and all bookings
 SELECT 
