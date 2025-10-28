@@ -1,4 +1,7 @@
+
+
 # Advanced Join Queries & Airbnb Database
+# Author: Ayman Makram 
 
 ## Objective
 Practice complex SQL joins in MySQL using the Airbnb database schema.
